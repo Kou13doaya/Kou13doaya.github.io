@@ -1,0 +1,206 @@
+body {
+  position: relative;
+  margin: 0;
+  background: #fff;
+  color: #222;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  line-height: 1.7;
+}
+
+/* ページの上のほうだけに薄い方眼を敷き、下に向かって消していく（アイコンの方眼に合わせる） */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 640px;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+main,
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main {
+  padding-top: 56px;
+}
+
+/* 名前と自己紹介 */
+.profile {
+  text-align: center;
+}
+
+.avatar {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* 好きなもの・やっていることを小さな札で並べる */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 2px 14px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* モットー：ページの締めくくりに置き、両脇に細い線を引く */
+.motto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 72px 0 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+}
+
+.motto::before,
+.motto::after {
+  content: "";
+  width: 40px;
+  border-top: 1px solid #999;
+}
+
+/* 見出しは置かず、まとまりの間を余白で区切る */
+section {
+  margin-top: 48px;
+}
+
+/* つくったもの：画像つきのカード */
+.tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.tool {
+  display: block;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.tool:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.tool img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tool-body {
+  padding: 12px 16px 16px;
+}
+
+.tool h2 {
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+
+.tool p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* リンク：縦に並ぶボタン */
+.links {
+  list-style: none;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.links li + li {
+  margin-top: 12px;
+}
+
+.links a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.links a:hover {
+  background: #f5f5f5;
+}
+
+/* アイコンはボタンの左端に置き、文字は中央のまま */
+.links .icon {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  fill: currentColor;
+}
+
+.links .icon-outline {
+  fill: none;
+}
+
+.links .icon-youtube {
+  fill: #f00;
+}
+
+.links span {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: #888;
+}
+
+footer {
+  margin-top: 48px;
+  padding-bottom: 32px;
+  color: #999;
+  text-align: center;
+}
